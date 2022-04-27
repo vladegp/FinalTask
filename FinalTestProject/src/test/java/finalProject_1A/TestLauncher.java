@@ -11,15 +11,15 @@ public class TestLauncher {
     HomePage homePage = new HomePage();
     FinalPage finalPage = new FinalPage();
     UserInfoAndDeliveryPage userAndDelivery = new UserInfoAndDeliveryPage();
-    Helper helper = new Helper();
+    UserPage userInfo = new UserPage();
 
     @Before
-    public void startChrome(){
+    public void startChrome() {
         basePage.openChromeUrl("https://www.1a.lv/");
     }
 
     @After
-    public void closeChrome(){
+    public void closeChrome() {
         basePage.closeChrome();
     }
 
@@ -35,9 +35,9 @@ public class TestLauncher {
         homePage.closePopUp();
         homePage.goToCart();
         finalPage.getProductNameInTheEnd();
-        homePage.completeOrder("uncer@gfail.com");
+        homePage.completeOrder(userInfo.getUserEmail());
         userAndDelivery.changeTheDeliveryWay();
-        userAndDelivery.unregisteredUserData("Uncer", "Ivanov", "26432935");
+        userAndDelivery.unregisteredUserData(userInfo.getUserName(), userInfo.getUserSurname(), userInfo.getUserPhoneNr());
 
         try {
             Thread.sleep(5000);

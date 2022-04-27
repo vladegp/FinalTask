@@ -6,6 +6,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class FinalPage extends BasePage {
 
+    ProductPage productPage = new ProductPage();
+
     private final By priceOnPage = By.xpath("//span[@class='price']");
     private final By nameOnPage = By.xpath("//*[@class='product-righter google-rich-snippet']/h1");
     private final By priceOnSummary = By.xpath("//span[@class='checkout-order-summary-total__price']");
@@ -28,16 +30,18 @@ public class FinalPage extends BasePage {
 
     public void getPriceAndNameOnProductPage() {
         priceOnProductPage = driver.findElement(priceOnPage).getText();
+        productPage.productPrice = priceOnProductPage;
         productNameOnProductPage = driver.findElement(nameOnPage).getText();
+        productPage.productName = productNameOnProductPage;
 
     }
     public void getPriceOnSummaryPage(){
         priceOnOrderSummary = driver.findElement(priceOnSummary).getText();
-        assertThat(priceOnOrderSummary).isEqualTo(priceOnProductPage);
+        assertThat(priceOnOrderSummary).isEqualTo(productPage.productPrice);
     }
 
     public void getProductNameInTheEnd(){
         productNameInTheEnd = driver.findElement(nameOnSummary).getText();
-        assertThat(productNameInTheEnd).isEqualTo(productNameOnProductPage);
+        assertThat(productNameInTheEnd).isEqualTo(productPage.productName);
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 public class HomePage extends BasePage {
 
     Helper helper = new Helper();
+    UserPage userInfo = new UserPage();
 
     private final By removeCookiesNotification = By.xpath("//a[@href='javascript:void(0)']");
     private final By enterSearchQuery = By.id("q");
