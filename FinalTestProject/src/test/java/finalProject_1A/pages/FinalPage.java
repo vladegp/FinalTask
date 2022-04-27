@@ -30,9 +30,9 @@ public class FinalPage extends BasePage {
 
     public void getPriceAndNameOnProductPage() {
         priceOnProductPage = driver.findElement(priceOnPage).getText();
-        productPage.productPrice = priceOnProductPage;
+        productPage.setProductPrice(priceOnProductPage);
         productNameOnProductPage = driver.findElement(nameOnPage).getText();
-        productPage.productName = productNameOnProductPage;
+        productPage.setProductName(productNameOnProductPage);
 
     }
     public void getPriceOnSummaryPage(){
