@@ -1,22 +1,18 @@
 package finalProject_1A.pages;
 
+import finalProject_1A.models.ProductModel;
 import org.openqa.selenium.By;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class FinalPage extends BasePage {
 
-    ProductPage productPage = new ProductPage();
+    ProductModel productModel = new ProductModel();
 
     private final By priceOnPage = By.xpath("//span[@class='price']");
     private final By nameOnPage = By.xpath("//*[@class='product-righter google-rich-snippet']/h1");
     private final By priceOnSummary = By.xpath("//span[@class='checkout-order-summary-total__price']");
     private final By nameOnSummary = By.xpath("//a[@class='detailed-cart-item__name-link']");
-
-    String priceOnProductPage;
-    String priceOnOrderSummary;
-    String productNameOnProductPage;
-    String productNameInTheEnd;
 
     public void checkMainPageLoaded() {
         try {
@@ -29,19 +25,19 @@ public class FinalPage extends BasePage {
     }
 
     public void getPriceAndNameOnProductPage() {
-        priceOnProductPage = driver.findElement(priceOnPage).getText();
-        productPage.setProductPrice(priceOnProductPage);
-        productNameOnProductPage = driver.findElement(nameOnPage).getText();
-        productPage.setProductName(productNameOnProductPage);
+        String priceOnProductPage = driver.findElement(priceOnPage).getText();
+        productModel.setProductPrice(priceOnProductPage);
+        String productNameOnProductPage = driver.findElement(nameOnPage).getText();
+        productModel.setProductName(productNameOnProductPage);
 
     }
     public void getPriceOnSummaryPage(){
-        priceOnOrderSummary = driver.findElement(priceOnSummary).getText();
-        assertThat(priceOnOrderSummary).isEqualTo(productPage.productPrice);
+        String priceOnOrderSummary = driver.findElement(priceOnSummary).getText();
+        assertThat(priceOnOrderSummary).isEqualTo(productModel.getProductPrice());
     }
 
     public void getProductNameInTheEnd(){
-        productNameInTheEnd = driver.findElement(nameOnSummary).getText();
-        assertThat(productNameInTheEnd).isEqualTo(productPage.productName);
+        String productNameInTheEnd = driver.findElement(nameOnSummary).getText();
+        assertThat(productNameInTheEnd).isEqualTo(productModel.getProductName());
     }
 }

@@ -1,6 +1,7 @@
 package finalProject_1A;
 
 import finalProject_1A.pages.*;
+import finalProject_1A.models.UserModel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class TestLauncher {
     HomePage homePage = new HomePage();
     FinalPage finalPage = new FinalPage();
     UserInfoAndDeliveryPage userAndDelivery = new UserInfoAndDeliveryPage();
-    UserPage userInfo = new UserPage();
+    UserModel userInfo = new UserModel();
 
     @Before
     public void startChrome() {

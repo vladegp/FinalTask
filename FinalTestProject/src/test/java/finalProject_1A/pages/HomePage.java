@@ -1,11 +1,12 @@
 package finalProject_1A.pages;
 
+import finalProject_1A.models.UserModel;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
 
     Helper helper = new Helper();
-    UserPage userInfo = new UserPage();
+    UserModel userInfo = new UserModel();
 
     private final By removeCookiesNotification = By.xpath("//a[@href='javascript:void(0)']");
     private final By enterSearchQuery = By.id("q");
